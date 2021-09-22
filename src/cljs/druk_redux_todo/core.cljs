@@ -51,7 +51,8 @@
            (not-empty present)
            (update-in [:todo :future] conj present)
 
-           :true-fixme (assoc-in [:todo :present] (peek past))
+           :unconditionally
+           (assoc-in [:todo :present] (or (peek past) []))
 
            (not-empty past)
            (update-in [:todo :past] pop)))
